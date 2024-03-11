@@ -1,2 +1,2 @@
 
-<strong>Copyright &copy; - <?php echo date('Y'); ?> <a target='_BLANK' href="#"> UMKM STMIK AMIK RIAU</a>.</strong> All rights reserved. 
+<strong>Copyright &copy; - <?php echo date('Y'); ?> <a target='_BLANK' href="#"> UMKM PROJECT B</a>.</strong> All rights reserved. 

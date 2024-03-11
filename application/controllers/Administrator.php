@@ -2243,13 +2243,15 @@ class Administrator extends CI_Controller {
             $where = array('username' => $this->input->post('id'));
             $this->model_app->update('users', $data, $where);
 
-              $mod=count($this->input->post('modul'));
-              $modul=$this->input->post('modul');
-              for($i=0;$i<$mod;$i++){
-                $datam = array('id_session'=>$this->input->post('ids'),
-                              'id_modul'=>$modul[$i]);
-                $this->model_app->insert('users_modul',$datam);
-              }
+            $modul = $this->input->post('modul');
+            if (is_array($modul) && count($modul) > 0) {
+                $mod = count($modul);
+                for ($i = 0; $i < $mod; $i++) {
+                    $datam = array('id_session' => $this->input->post('ids'),
+                        'id_modul' => $modul[$i]);
+                    $this->model_app->insert('users_modul', $datam);
+                }
+            }
 
 			redirect($this->uri->segment(1).'/edit_manajemenuser/'.$this->input->post('id'));
 		}else{

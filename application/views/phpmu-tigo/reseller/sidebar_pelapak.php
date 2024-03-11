@@ -7,7 +7,8 @@ echo "<div class='widget'>
         if (trim($rows['foto'])==''){ $foto_user = 'users.gif'; }else{ $foto_user = $rows['foto']; }
         $ex = explode(' ', $rows['tanggal_daftar']);
         $sukses = $this->db->query("SELECT * FROM rb_penjualan where id_penjual='$rows[id_reseller]' AND status_penjual='reseller' AND proses!='0'");
-        $pelanggan = $this->db->query("SELECT * FROM rb_penjualan where id_penjual='$rows[id_reseller]' AND status_pembeli='konsumen' AND status_penjual='reseller' GROUP BY id_pembeli");
+        $pelanggan = $this->db->query("SELECT MIN(id_penjualan) AS id_penjualan FROM rb_penjualan WHERE id_penjual='$rows[id_reseller]' AND status_pembeli='konsumen' AND status_penjual='reseller' GROUP BY id_pembeli");
+
         echo "<tr bgcolor='#e3e3e3'><td rowspan='4' style='width:70px'><center><img style='border:1px solid #cecece; height:60px; width:60px' src='".base_url()."asset/foto_user/$foto_user' class='img-circle img-thumbnail'></center></td></tr>
         <tr><td colspan='2'><b style='font-size:16px'>$rows[nama_reseller]</b></td></tr>
         <tr><td colspan='2'><span class='glyphicon glyphicon-globe'></span> $rows[nama_kota]</td></tr>
